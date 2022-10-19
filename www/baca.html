@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--
+  Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+      https://cordova.apache.org/docs/en/latest/
+  Some notes:
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: content:" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+
+    <meta name="theme-color" content="#fff" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <title>Read</title>
+
+    <link rel="stylesheet" href="framework7/framework7-bundle.css" />
+    <link rel="stylesheet" href="css/icons.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="jquery.star-rating-svg.js"></script>
+    <link rel="stylesheet" type="text/css" href="star-rating-svg.css" />
+  </head>
+
+  <body>
+    <div class="page" data-name="baca">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="navbar-bg"></div>
+          <div class="left">
+            <a href="/" class="back link icon-only">
+              <i class="icon icon-back"></i>
+            </a>
+          </div>
+          <div class="title">Read</div>
+        </div>
+      </div>
+      <div class="page-content">
+        <div class="block">
+          <div class="row" id="bacaK"></div>
+          <div class="row">
+            <form method="POST" class="form-ajax-submit">
+              <div class="list no-hairlines-md" style="width: 100%">
+                <ul>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-floating-label">Komentar</div>
+                      <div class="item-input-wrap">
+                        <input id="komentar" type="text" placeholder="input movie title" />
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <input type="button" name="btnsubmit" id="btnKomentar" class="button button-fill button-big" value="Tambahkan Komentar" />
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <input type="button" name="btnsubmit" id="btnFavorit" class="button button-fill button-big" value="Masukkan ke favorit" />
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <label for="">Rating :</label>
+                    <style>
+                      .f7-icons {
+                        cursor: pointer;
+                        color: #484848b2;
+                        transition: filter linear 0.3s;
+                      }
+
+                      .f7-icons:hover {
+                        filter: drop-shadow(1px 1px 4px gold);
+                      }
+                    </style>
+                    <div class="rating">
+                      <i class="f7-icons" id="st1">star</i>
+                      <i class="f7-icons" id="st2">star</i>
+                      <i class="f7-icons" id="st3">star</i>
+                      <i class="f7-icons" id="st4">star</i>
+                      <i class="f7-icons" id="st5">star</i>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- CORDOVA_PLACEHOLDER_DONT_REMOVE -->
+    <!-- Framework7 library -->
+    <script src="framework7/framework7-bundle.min.js"></script>
+    <!-- Cordova APIs -->
+    <script src="js/cordova-app.js"></script>
+
+    <!-- App routes -->
+    <script src="js/routes.js"></script>
+    <!-- App store -->
+    <script src="js/store.js"></script>
+    <!-- App scripts -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
