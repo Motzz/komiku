@@ -207,6 +207,28 @@ var app = new Framework7({
                 } else app.dialog.alert("Gagal menambah data");
               });
             });
+            $$("#btnFavorit").on("click", function () {
+              app.request.post("https://ubaya.fun/hybrid/160419007/komik_api/favoritCheck.php", {}, function (dataFav) {
+                var arr = JSON.parse(dataFav);
+                var komikFav = arr["data"];
+                // for (var i = 0; i < komikFav.length; i++) {
+                //   if (komikFav[i]["id_komikF"] == id && komikFav[i]["id_userF"] == localStorage.idUser) {
+                //     app.dialog.alert("Komik sudah ada di Favorit!");
+                //     i = komikFav.length;
+                //   }
+                //   else if (komikFav[i]["id_komikF"] != id && komikFav[i]["id_userF"] != localStorage.idUser) {
+                // i = komikFav.length;
+                app.request.post("https://ubaya.fun/hybrid/160419007/komik_api/favoritAdd.php", { iduser: localStorage.idUser, idkomik: id }, function (data) {
+                  var arr = JSON.parse(data);
+                  var result = arr["result"];
+                  if (result == "success") {
+                    app.dialog.alert("Sukses menambahkan ke favorit!");
+                  } else app.dialog.alert("Gagal menambah ke favorit");
+                });
+                // }
+                // }
+              });
+            });
           });
 
           // for (var i = 1; i <= 5; i++) {
