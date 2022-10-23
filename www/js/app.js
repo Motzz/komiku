@@ -176,13 +176,39 @@ var app = new Framework7({
                   komentar[i]["username"] +
                   "</div></div>" +
                   "<div class='item-subtitle'>Comment:</div>" +
-                  "<div class='item-text'>" +
+                  "<div id='komenVal' idKomen='" +
                   komentar[i]["komentar"] +
+                  "' class='item-text'>" +
+                  komentar[i]["komentar"] +
+                  "</div>" +
+                  "<div id='tmptHapus'>" +
+                  (komentar[i]["id_userC"] == localStorage.idUser ? "<button id='btnHapus' idKomen=" + komentar[i]["komentar"] + " class='button button-raised button-round color-orange'>Hapus</button>" : "") +
                   "</div>" +
                   "</div>" +
                   "</li>"
               );
+              // alert($$(this)("item-text").text());
+              // if (komentar[i]["id_userC"] == localStorage.idUser) {
+              //   $$("#tmptHapus").append("<button id='btnHapus' class='button button-raised button-round color-orange'>Hapus</button>");
+              // } else {
+              //   $$("#tmptHapus").html("");
+              // }
+              $$("#btnHapus").on("click", function () {
+                // alert($$(this).attr("idKomen"));
+                app.request.post("https://ubaya.fun/hybrid/160419007/komik_api/hapusKomen.php", { iduser: localStorage.idUser, idkomik: id, komentar: $$(this).attr("idKomen") }, function (data) {
+                  var arr = JSON.parse(data);
+                  var result = arr["result"];
+                  if (result == "success") {
+                    app.dialog.alert("berhasil menghapus komentar!");
+                    app.view.main.router.navigate("/komik", {
+                      reloadCurrent: true,
+                      pushState: false,
+                    });
+                  } else app.dialog.alert("gagal menghapus komentar");
+                });
+              });
             }
+
             $$("#st1").on("click", function () {
               $$(".f7-icons").css("background-color", "white");
               $$("#st1").css("background-color", "yellow");
@@ -263,7 +289,7 @@ var app = new Framework7({
                   if (result == "success") {
                     $$("#komentar").val("");
                     app.dialog.alert("Sukses menambah komentar");
-                    app.view.main.router.navigate("/bacaKomik/" + arr["id"], {
+                    app.view.main.router.navigate("/komik", {
                       reloadCurrent: true,
                       pushState: false,
                     });
