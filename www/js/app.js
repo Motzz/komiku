@@ -55,12 +55,88 @@ var app = new Framework7({
         localStorage.removeItem("idUser");
         location.reload();
       });
+      function coba(num) {
+        var result = "";
+        for (i = 1; i <= num; i++) {
+          for (j = 1; j <= num; j++) {
+            result += "halo" + i + " " + j + "\n";
+          }
+        }
+        return result;
+      }
 
+      // function palindrom (huruf)
+      // {
+      //   var hur =
+
+      // }
+
+      // function checkPalindrome(string) {
+      //   // find the length of a string
+      //   const len = string.length;
+
+      //   // loop through half of the string
+      //   for (let i = 0; i < len / 2; i++) {
+      //     // check if first and last string are same
+      //     console.log(string[len - i]);
+      //     console.log(i);
+
+      //     if (string[i] !== string[len - 1 - i]) {
+      //       return "It is not a palindrome";
+      //     }
+      //   }
+      //   return "It is a palindrome";
+      // }
+
+      // function fubo(num) {
+      //   if (num === 0) {
+      //     return 1;
+      //   }
+      //   return num * fubo(num - 1);
+      // }
+
+      // function fubo(n) {
+      //   let answer = 1;
+      //   if (n == 0 || n == 1) {
+      //     return answer;
+      //   } else {
+      //     for (var i = n; i >= 1; i--) {
+      //       answer = answer * i;
+      //       console.log(answer);
+      //     }
+      //     return answer;
+      //   }
+      // }
+
+      // const string = prompt("Enter a string: ");
+
+      // const value = fubo(string);
+
+      // console.log(value);
+      var num = "";
+      for (var i = 0; i <= 5; i++) {
+        num = num + i;
+      }
+
+      console.log(num); // printing the value of i
+      // function coba1(num) {
+      // var result = "";
+      // for (i = 0; i <= 6; i++) {
+      //   for (j = 0; j < i; j++) {
+      //     result += "*";
+      //   }
+      //   console.log(result + j);
+
+      //   result = "";
+      // }
+
+      //   return result;
+      // }
       $$(document).on("page:init", function (e, page) {
         if (page.name == "login") {
           localStorage.removeItem("username");
           localStorage.removeItem("idUser");
-
+          // console.log(coba1(5));
           $$("#btnsignin").on("click", function () {
             app.request.post("https://ubaya.fun/hybrid/160419007/komik_api/loginKomik.php", { username: $$("#username").val(), password: $$("#password").val() }, function (data) {
               var arr = JSON.parse(data);
